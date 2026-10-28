@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicole Nelnida - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            /* Static Background Image */
+            background-image: url('bc2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #000000;
+            
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        /* Sticky Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid #2669dc;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-btn {
+            background-color: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #26acdc;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #2687dc;
+            color: #ffffff;
+            border-color: #ef4444;
+            box-shadow: 0 0 12px rgba(220, 38, 38, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Sections na may solid black background at red border */
+        section {
+            min-height: 80vh;
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: #000000;
+            border-radius: 10px;
+            border: 1px solid #dc2626;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.15);
+            scroll-margin-top: 90px; /* Para hindi matakpan ng navbar kapag pinindot */
+        }
+
+        /* --- STYLES PARA SA HOME SECTION --- */
+        .home-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            min-height: 60vh;
+        }
+
+        .profile-img-box {
+            flex-shrink: 0;
+        }
+
+       .profile-img {
+            width: 180px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50px / 80px;
+            border: 3px solid #dc2626;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .home-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .home-text h1 {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .home-text h3 {
+            font-size: 18px;
+            color: #dc2626;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .home-text p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        /* --- DETAILED PROFILE CONTENT --- */
+        .profile-details {
+            padding: 0 20px;
+        }
+
+        .profile-details h2 {
+            color: #ef4444;
+            font-size: 24px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 10px;
+        }
+
+        .profile-category {
+            margin-bottom: 25px;
+        }
+
+        .profile-category h4 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .profile-category p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        /* --- STYLES PARA SA SKILLS SECTION --- */
+        .skills-details {
+            padding: 0 20px;
+        }
+
+        .skills-details h2 {
+            color: #ef4444;
+            font-size: 24px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background-color: rgba(10, 10, 10, 0.6);
+            border: 1px solid #dc2626;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.25);
+            border-color: #ef4444;
+        }
+
+        .skill-card h4 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+            padding-bottom: 6px;
+        }
+
+        .skill-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .skill-card li {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .skill-card li::before {
+            content: "•";
+            color: #dc2626;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- STYLES PARA SA CERTIFICATES SECTION --- */
+        .certificates-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .cert-card {
+            background-color: #0a0a0a;
+            border: 1px solid #dc2626;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            width: 500px;
+            height: 500px;
+            max-width: 100%; /* Responsive para sa maliliit na screen */
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+            border-color: #ef4444;
+        }
+
+        .cert-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Para hindi ma-distort ang PNG image */
+            display: block;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .btn-primary {
+            background-color: #dc2626;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #ef4444;
+            transform: translateY(-3px);
+            box-shadow: 0 0 18px rgba(239, 68, 68, 0.8);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #dc2626;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            border: 2px solid #dc2626;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(220, 38, 38, 0.1);
+            color: #ef4444;
+            border-color: #ef4444;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="nav-btn">Home</a>
+            <a href="#profile" class="nav-btn">Profile</a>
+            <a href="#skills" class="nav-btn">Skills</a>
+            <a href="#projects" class="nav-btn">Projects</a>
+            <a href="#problem-solving" class="nav-btn">Problem-Solving</a>
+            <a href="#employability" class="nav-btn">Employability</a>
+            <a href="#resume" class="nav-btn">Resume</a>
+            <a href="#certificates" class="nav-btn">Certificates/Achievements</a>
+            <a href="#github" class="nav-btn">Github</a>
+            <a href="#contact" class="nav-btn">Contact</a>
+            <a href="#reflection" class="nav-btn">Reflection</a>
+        </div>
+    </nav>
+
+  <!-- Home Section -->
+    <section id="home">
+        <div class="home-container">
+            <div class="profile-img-box">
+                <img src="profile.jpg" alt="Profile Picture" class="profile-img">
+            </div>
+
+            <div class="home-text">
+                <h1>Hi, I am Nicole Nelnida</h1>
+                <h3>Data Analyst</h3>
+                <p>
+                    As a BSIT graduate from Datamex School of Saint Adeline, I specialize in transforming raw data into actionable insights through data cleaning, analysis, and visualization.
+                </p>
+
+                <div class="btn-group">
+                    <a href="#contact" class="btn-primary">Hire Me</a>
+                    <a href="Resume.pdf" download="Resume_Nicole_Nelnida.pdf" class="btn-secondary">Download Resume</a>
+                    <a href="#projects" class="btn-secondary">View My Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="profile-details">
+            <h2>Professional Profile</h2>
+
+            <div class="profile-category">
+                <h4>About Me</h4>
+                <p>
+                    Hello! I’m Nicole Nelnida, graduated Bachelor of Science in Information Technology (BSIT) student with a strong passion for transforming raw data into actionable business insights. Throughout my academic journey, I have developed a solid foundation in core IT principles, system workflows, and modern web technologies, while steadily sharpening my focus toward Data Analytics.
+                </p>
+            </div>
+
+            <div class="profile-category">
+                <h4>Technical Strengths & Skills</h4>
+                <p>
+                    My technical toolkit bridges traditional IT with data-driven decision-making. I have experience working with version control platforms like GitHub, document and asset management, and data structuring. My analytical skills focus on data cleaning, exploratory data analysis, and data visualization, allowing me to translate complex datasets into clear, impactful visual reports and executive summaries.
+                </p>
+            </div>
+
+            <div class="profile-category">
+                <h4>Professional Values & Work Ethic</h4>
+                <p>
+                    I strongly value transparency, meticulous precision, and operational accountability. Whether managing project finances, auditing event breakdowns, or organizing structured data lists, I prioritize accuracy and integrity in everything I build and analyze.
+                </p>
+            </div>
+
+            <div class="profile-category">
+                <h4>Career Goals & Interest</h4>
+                <p>
+                    I am actively seeking opportunities in Data Analytics, Business Intelligence, and Data Operations. I thrive in roles where I can leverage analytical frameworks to solve complex problems, optimize workflows, and help teams make data-backed strategic decisions. I am eager to apply my technical skills to real-world datasets and contribute to impactful, data-driven projects.
+                </p>
+            </div>
+        </div>
+    </section>
+   <!-- SKILLS SECTION -->
+<section id="skills" style="padding: 40px 20px; max-width: 1000px; margin: 40px auto;">
+
+    <!-- BOX 1: Technical & Digital Skills Main Placeholder Box -->
+    <div style="background-color: rgba(0, 0, 0, 0.9) !important; border: 2px solid #ff0000 !important; border-radius: 12px !important; padding: 30px !important; margin-bottom: 30px !important; color: #ffffff !important; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3) !important;">
+        
+        <h2 style="color: #1900ff !important; margin-top: 0 !important; font-size: 2.2rem !important; border-bottom: 2px solid #333333 !important; padding-bottom: 12px !important; margin-bottom: 25px !important; text-align: left !important;">
+            Technical & Digital Skills
+        </h2>
+
+        <!-- Cards Container -->
+        <div style="display: flex !important; gap: 20px !important; flex-wrap: wrap !important;">
+            
+            <!-- Web Development Card -->
+            <div style="flex: 1 !important; min-width: 250px !important; background-color: #000000 !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 20px !important;">
+                <h3 style="color: #ffffff !important; margin-top: 0 !important; border-bottom: 1px solid #333333 !important; padding-bottom: 8px !important; font-size: 1.2rem !important;">Web Development</h3>
+                <ul style="color: #ccc !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 0 !important; font-size: 0.95rem !important;">
+                    <li>HTML & CSS (Portfolio Design)</li>
+                    <li>GitHub Pages Hosting</li>
+                    <li>Responsive Layout Customization</li>
+                </ul>
+            </div>
+
+            <!-- Data & Spreadsheet Tools Card -->
+            <div style="flex: 1 !important; min-width: 250px !important; background-color: #000000 !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 20px !important;">
+                <h3 style="color: #ffffff !important; margin-top: 0 !important; border-bottom: 1px solid #333333 !important; padding-bottom: 8px !important; font-size: 1.2rem !important;">Data & Spreadsheet Tools</h3>
+                <ul style="color: #ccc !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 0 !important; font-size: 0.95rem !important;">
+                    <li>Microsoft Excel (Data Organization & Formatting)</li>
+                    <li>Basic Data Cleaning & Sorting</li>
+                    <li>Tabular Record Management</li>
+                </ul>
+            </div>
+
+            <!-- Documentation & Organization Card -->
+            <div style="flex: 1 !important; min-width: 250px !important; background-color: #000000 !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 20px !important;">
+                <h3 style="color: #ffffff !important; margin-top: 0 !important; border-bottom: 1px solid #333333 !important; padding-bottom: 8px !important; font-size: 1.2rem !important;">Documentation & Organization</h3>
+                <ul style="color: #ccc !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 0 !important; font-size: 0.95rem !important;">
+                    <li>Asset & File Management</li>
+                    <li>Systematic Data Structuring</li>
+                    <li>Transparent Documentation & Reports</li>
+                </ul>
+            </div>
+
+            <!-- Tools & Platforms Card (Pinalitan ang lapad para sakto lang sa text) -->
+            <div style="flex: 0 1 calc(33.333% - 14px) !important; min-width: 280px !important; max-width: fit-content !important; background-color: #000000 !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 20px !important;">
+                <h3 style="color: #ffffff !important; margin-top: 0 !important; border-bottom: 1px solid #333333 !important; padding-bottom: 8px !important; font-size: 1.2rem !important;">Tools & Platforms</h3>
+                <ul style="color: #ccc !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 0 !important; font-size: 0.95rem !important;">
+                    <li>Git & GitHub (Version Control)</li>
+                    <li>Cloud Storage & File Organization</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+<!-- BOX 2: Skills Inventory Box -->
+    <div style="background-color: #ffffff !important; border: 2px solid #000000 !important; border-radius: 12px !important; padding: 30px !important; color: #000000 !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;">
+        
+        <h3 style="color: #000000 !important; margin-top: 0 !important; font-size: 1.8rem !important; border-bottom: 2px solid #000000 !important; padding-bottom: 10px !important; margin-bottom: 20px !important;">
+            Skills Inventory
+        </h3>
+
+        <div style="overflow-x: auto !important;">
+            <table style="width: 100% !important; border-collapse: collapse !important; text-align: left !important; font-size: 0.95rem !important;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #000000 !important; color: #000000 !important; background-color: #f2f2f2 !important;">
+                        <th style="padding: 12px !important;">Area</th>
+                        <th style="padding: 12px !important;">Skill</th>
+                        <th style="padding: 12px !important;">Level</th>
+                        <th style="padding: 12px !important;">Evidence / Project</th>
+                    </tr>
+                </thead>
+                <tbody style="color: #222222 !important;">
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Programming</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Java / C++ / C#</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Coursework & Logic Foundations</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Web</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">HTML / CSS</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Project 1 (Student Management System) & Portfolio Website</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Database</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">SQL / MySQL</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Project 1 (Student Management System - Data Mapping)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Database</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">ERD / Database Design</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Project 1 (Student Management System Documentation)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Tools</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Git / GitHub</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Portfolio Website Deployment & GitHub Repositories</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Networking</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">TCP/IP / DNS / Troubleshooting</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">IT Troubleshooting Case Study (Wi-Fi Connectivity Case)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Cybersecurity</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Security Fundamentals</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Cybersecurity Case Study (SQL Injection Vulnerability)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Data</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Excel / Sheets / Data Analysis</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Project 2 (Sales Analytics Report) & Project 3 (Financial Dashboard)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e0e0e0 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">Cloud</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Deployment / Hosting</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">GitHub Pages Portfolio Hosting</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px !important; vertical-align: top !important;">AI</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">AI Tools / Responsible AI Use</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Beginner</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">AI Usage Log</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</section>
+    
+    <!-- PROJECTS SECTION -->
+    <section id="projects" style="padding: 40px 20px; max-width: 1000px; margin: 40px auto;">
+        <h2 style="color: #ff0000 !important; text-align: center !important; margin-bottom: 40px !important; font-size: 2.5rem !important;">My Projects</h2>
+
+       <!-- Project 1: Student Management System -->
+<div style="background-color: rgba(0, 0, 0, 0.9) !important; border: 2px solid #ff0000 !important; border-radius: 12px !important; padding: 30px !important; margin-bottom: 30px !important; color: #ffffff !important; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3) !important;">
+    <h3 style="color: #ff0000 !important; margin-top: 0 !important; font-size: 1.8rem !important;">Project 1: Student Management System</h3>
+    <p style="color: #aaa !important; font-style: italic !important; margin-bottom: 15px !important;">Web / Application Development Project (Major Project)</p>
+    
+    <p style="color: #ccc !important; line-height: 1.6 !important; margin-bottom: 15px !important;">
+        A functional web-based application built for managing student records featuring user authentication, CRUD operations, and search filtering.
+    </p>
+
+    <!-- 2 Pictures Container (Para sa Charts / Preview Images) -->
+    <div style="display: flex !important; gap: 20px !important; flex-wrap: wrap !important; margin-top: 20px !important; margin-bottom: 20px !important;">
+        <div style="flex: 1 !important; min-width: 280px !important; background-color: #000000 !important; border: 1px solid #333333 !important; border-radius: 8px !important; padding: 10px !important; text-align: center !important;">
+            <img src="Loginpreview.png" alt="Project 1 Preview 1" style="max-width: 100% !important; height: auto !important; border-radius: 4px !important; display: block !important; margin: 0 auto !important;">
+           
+        </div>
+        <div style="flex: 1 !important; min-width: 280px !important; background-color: #000000 !important; border: 1px solid #333333 !important; border-radius: 8px !important; padding: 10px !important; text-align: center !important;">
+            <img src="database.png" alt="Project 1 Preview 2" style="max-width: 100% !important; height: auto !important; border-radius: 4px !important; display: block !important; margin: 0 auto !important;">
+          
+        </div>
+    </div>
+
+    <div style="margin-top: 20px !important; display: flex !important; gap: 10px !important; flex-wrap: wrap !important;">
+        <a href="https://buendiamajoriecsa.github.io/studentmanagementsystem/" target="_blank" style="display: inline-block !important; padding: 10px 20px !important; background-color: #ff0000 !important; color: #fff !important; text-decoration: none !important; border-radius: 6px !important; font-weight: bold !important;">🔗 View Live Demo</a>
+        <a href="https://github.com/buendiamajoriecsa/studentmanagementsystem" target="_blank" style="display: inline-block !important; padding: 10px 20px !important; background-color: #333 !important; color: #fff !important; text-decoration: none !important; border-radius: 6px !important; font-weight: bold !important; border: 1px solid #ff0000 !important;">💻 Source Code</a>
+    </div>
+</div>
+       <div style="background-color: rgba(0, 0, 0, 0.9) !important; border: 2px solid #ff0000 !important; border-radius: 12px !important; padding: 30px !important; margin-bottom: 30px !important; color: #ffffff !important; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3) !important;">
+            <h3 style="color: #ff0000 !important; margin-top: 0 !important; font-size: 1.8rem !important;">Project 2: Campus WiFi Performance Analysis</h3>
+            <p style="color: #aaa !important; font-style: italic !important; margin-bottom: 15px !important;">Data Analytics & Spreadsheet Case Study</p>
+            
+            <p style="color: #ccc !important; line-height: 1.6 !important; margin-bottom: 15px !important;">
+                <strong>Scenario:</strong> Evaluated the performance of the campus WiFi network using Microsoft Excel. Analyzed 50 WiFi records to identify network performance patterns, user types, location bottlenecks, and provided evidence-based recommendations.
+            </p>
+
+            <h4 style="color: #fff !important; margin-top: 20px !important; margin-bottom: 10px !important; font-size: 1.1rem !important;">1. Data Inspection & Descriptive Statistics:</h4>
+            <ul style="color: #bbb !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 15px !important;">
+                <li><strong>Data Cleaning:</strong> Checked for missing/invalid values and duplicate record IDs. Ensured numerical formatting for speeds and downtime.</li>
+                <li><strong>Download Speed:</strong> Mean = 76.51 Mbps | Median = 77.10 Mbps</li>
+                <li><strong>Upload Speed:</strong> Mean = 21.91 Mbps | Median = 20.95 Mbps</li>
+                <li><strong>Downtime Minutes:</strong> Mean = 18.40 | Median = 18.5</li>
+                <li><strong>Satisfaction Rating:</strong> Mean = 4.22 (Out of 5)</li>
+            </ul>
+
+            <h4 style="color: #fff !important; margin-top: 20px !important; margin-bottom: 10px !important; font-size: 1.1rem !important;">2. User Types & Campus Location Insights:</h4>
+            <ul style="color: #bbb !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 15px !important;">
+                <li><strong>User Distribution:</strong> Students = 37 | Faculty = 9 | Staff = 4</li>
+                <li><strong>Highest Download Speed:</strong> Computer Laboratory (82.44 Mbps)</li>
+                <li><strong>Lowest Download Speed & Highest Downtime:</strong> Student Center (65.63 Mbps / 28.20 mins)</li>
+            </ul>
+
+            <h4 style="color: #fff !important; margin-top: 20px !important; margin-bottom: 10px !important; font-size: 1.1rem !important;">3. Correlation Analysis:</h4>
+            <ul style="color: #bbb !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 15px !important;">
+                <li><strong>Downtime vs. Satisfaction Rating:</strong> r = -0.748 (Strong negative correlation, indicating higher downtime lowers satisfaction).</li>
+            </ul>
+
+            <!-- 3 Charts para sa Project 2 -->
+            <h4 style="color: #ff0000 !important; margin-top: 25px !important; margin-bottom: 10px !important; font-size: 1.2rem !important; text-align: center;">Project Visualizations & Charts</h4>
+            
+            <div style="background-color: rgba(20, 20, 20, 0.8) !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 15px !important; text-align: center !important; margin: 15px 0 !important;">
+                <p style="color: #fff; margin-bottom: 8px; font-size: 0.9rem;">Chart 1: Download Speed by Location</p>
+                <img src="CASE11CHART1.png" alt="WiFi Chart 1" style="width: 100% !important; max-width: 600px !important; border-radius: 6px !important; border: 1px solid #444 !important;">
+            </div>
+
+            <div style="background-color: rgba(20, 20, 20, 0.8) !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 15px !important; text-align: center !important; margin: 15px 0 !important;">
+                <p style="color: #fff; margin-bottom: 8px; font-size: 0.9rem;">Chart 2: Downtime Minutes per User Type</p>
+                <img src="CASE11CHART2.png" alt="WiFi Chart 2" style="width: 100% !important; max-width: 600px !important; border-radius: 6px !important; border: 1px solid #444 !important;">
+            </div>
+
+            <div style="background-color: rgba(20, 20, 20, 0.8) !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 15px !important; text-align: center !important; margin: 15px 0 !important;">
+                <p style="color: #fff; margin-bottom: 8px; font-size: 0.9rem;">Chart 3: Downtime vs Satisfaction Correlation</p>
+                <img src="CASE11CHART3.png" alt="WiFi Chart 3" style="width: 100% !important; max-width: 600px !important; border-radius: 6px !important; border: 1px solid #444 !important;">
+            </div>
+
+            <h4 style="color: #fff !important; margin-top: 25px !important; margin-bottom: 10px !important; font-size: 1.1rem !important;">4. Evidence-Based Recommendations:</h4>
+            <ol style="color: #bbb !important; line-height: 1.6 !important; padding-left: 20px !important;">
+                <li>Upgrade equipment and capacity at the Student Center.</li>
+                <li>Implement regular network maintenance to reduce downtime.</li>
+            </ol>
+        </div>
+        <!-- PROJECT 3: IT Service Center Performance Analysis -->
+        <div style="background-color: rgba(0, 0, 0, 0.9) !important; border: 2px solid #ff0000 !important; border-radius: 12px !important; padding: 30px !important; margin-bottom: 30px !important; color: #ffffff !important; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3) !important;">
+            <h3 style="color: #ff0000 !important; margin-top: 0 !important; font-size: 1.8rem !important;">Project 3: IT Service Center Performance Analysis</h3>
+            <p style="color: #aaa !important; font-style: italic !important; margin-bottom: 15px !important;">Data Analytics & Spreadsheet Case Study</p>
+            
+            <p style="color: #ccc !important; line-height: 1.6 !important; margin-bottom: 15px !important;">
+                <strong>Scenario:</strong> Evaluated the efficiency of a school's IT Service Center using Microsoft Excel[cite: 4]. Analyzed 50 service request records to track response times, resolution hours, technician performance, and customer satisfaction ratings to provide evidence-based service improvements.
+            </p>
+
+            <h4 style="color: #fff !important; margin-top: 20px !important; margin-bottom: 10px !important; font-size: 1.1rem !important;">1. Data Inspection & Descriptive Statistics:</h4>
+            <ul style="color: #bbb !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 15px !important;">
+                <li><strong>Data Cleaning:</strong> Checked for missing values, duplicate Service IDs, invalid numerical values, and formatted response/resolution times.</li>
+                <li><strong>Response Time (Mins):</strong> Mean = 36.22 | Median = 35.00 | Min = 3.0 | Max = 77.0</li>
+                <li><strong>Resolution Time (Hours):</strong> Mean = 3.85 | Median = 3.95 | Min = 0.5 | Max = 9.2</li>
+                <li><strong>Satisfaction Rating:</strong> Mean = 4.55 | Median = 4.60 | Min = 3.2 | Max = 5.0</li>
+            </ul>
+
+            <h4 style="color: #fff !important; margin-top: 20px !important; margin-bottom: 10px !important; font-size: 1.1rem !important;">2. User Types & Issue Breakdown:</h4>
+            <ul style="color: #bbb !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 15px !important;">
+                <li><strong>User Distribution:</strong> Students = 36 (72%) | Faculty = 12 (24%) | Staff = 2 (4%)</li>
+                <li><strong>Top Issue Types:</strong> Software issues (16 requests / 32%) and Network issues (14 requests / 28%), indicating heavy reliance on computer software and network stability.</li>
+                <li><strong>First-Contact Resolution:</strong> 58% of requests were resolved successfully on first contact (29 out of 50 requests), while 42% required additional follow-up or escalation.</li>
+            </ul>
+
+            <h4 style="color: #fff !important; margin-top: 20px !important; margin-bottom: 10px !important; font-size: 1.1rem !important;">3. Correlation Analysis:</h4>
+            <ul style="color: #bbb !important; line-height: 1.6 !important; padding-left: 20px !important; margin-bottom: 15px !important;">
+                <li><strong>Resolution Time vs. Customer Satisfaction:</strong> r = -0.59 (Moderate to strong negative correlation, proving that longer resolution times are directly associated with lower customer satisfaction ratings).</li>
+            </ul>
+
+            <!-- 3 Charts para sa Project 3 (Batay sa iyong mga larawan) -->
+            <h4 style="color: #ff0000 !important; margin-top: 25px !important; margin-bottom: 10px !important; font-size: 1.2rem !important; text-align: center;">Project Visualizations & Charts</h4>
+
+            <div style="background-color: rgba(20, 20, 20, 0.8) !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 15px !important; text-align: center !important; margin: 15px 0 !important;">
+                <p style="color: #fff; margin-bottom: 8px; font-size: 0.9rem;">Chart 1: Number of Requests by Issue Type</p>
+                <img src="CASE12CHART1.jpg" alt="IT Service Chart 1" style="width: 100% !important; max-width: 600px !important; border-radius: 6px !important; border: 1px solid #444 !important;">
+            </div>
+
+            <div style="background-color: rgba(20, 20, 20, 0.8) !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 15px !important; text-align: center !important; margin: 15px 0 !important;">
+                <p style="color: #fff; margin-bottom: 8px; font-size: 0.9rem;">Chart 2: Average Resolution Time by Priority</p>
+                <img src="CASE12CHART2.jpg" alt="IT Service Chart 2" style="width: 100% !important; max-width: 600px !important; border-radius: 6px !important; border: 1px solid #444 !important;">
+            </div>
+
+            <div style="background-color: rgba(20, 20, 20, 0.8) !important; border: 1px solid #ff0000 !important; border-radius: 8px !important; padding: 15px !important; text-align: center !important; margin: 15px 0 !important;">
+                <p style="color: #fff; margin-bottom: 8px; font-size: 0.9rem;">Chart 3: Average Satisfaction Rating by Technician</p>
+                <img src="CASE12CHART3.jpg" alt="IT Service Chart 3" style="width: 100% !important; max-width: 600px !important; border-radius: 6px !important; border: 1px solid #444 !important;">
+            </div>
+
+            <h4 style="color: #fff !important; margin-top: 25px !important; margin-bottom: 10px !important; font-size: 1.1rem !important;">4. Evidence-Based Recommendations:</h4>
+            <ol style="color: #bbb !important; line-height: 1.6 !important; padding-left: 20px !important;">
+                <li>Create an automated system for simple password and account resets to reduce response waiting times.</li>
+                <li>Provide IT staff with better tools and training for Hardware and Network fixes to lower high resolution hours.</li>
+                <li>Focus on resolving requests on first contact, as faster resolution leads directly to higher user satisfaction.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Problem-Solving Section -->
+  <section id="problem-solving" style="background-color: #000; color: #fff; padding: 40px 20px;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2 style="color: #ff4d4d; border-bottom: 2px solid #ff4d4d; padding-bottom: 10px; margin-bottom: 25px;">
+                Problem-Solving Portfolio & Evidence
+            </h2>
+
+          <!-- KAHON 1: Problem Solving (Data Entry & Form Validation) -->
+            <div style="background-color: #111; border: 1px solid #333; border-left: 4px solid #ff4d4d; border-radius: 8px; padding: 25px; margin-bottom: 30px;">
+                <h3 style="color: #ff4d4d; margin-top: 0;">Case Study: Incomplete Data Entry and Validation in Records</h3>
+                
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">1. Problem</h4>
+                    <p style="margin-top: 0; color: #ccc; line-height: 1.6;">
+                        Student and sales records were sometimes submitted with important text fields left completely blank or improperly formatted, resulting in inconsistent data entries.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">2. Possible Causes</h4>
+                    <ul style="color: #ccc; line-height: 1.6; margin-top: 0; padding-left: 20px;">
+                        <li>Missing input validation attributes in the HTML form elements.</li>
+                        <li>Lack of standard formatting and data rules in spreadsheet or tabular record sheets.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">3. Diagnostic Procedure</h4>
+                    <ul style="color: #ccc; line-height: 1.6; margin-top: 0; padding-left: 20px;">
+                        <li>Tested form submissions by leaving required fields empty to check how errors are handled.</li>
+                        <li>Audited spreadsheet and record lists to spot missing values and unstructured entries.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">4. Solution</h4>
+                    <ul style="color: #ccc; line-height: 1.6; margin-top: 0; padding-left: 20px;">
+                        <li>Added the <code>required</code> attribute to HTML input fields to restrict blank submissions.</li>
+                        <li>Applied systematic data organization and formatting rules in Microsoft Excel to clean and structure tabular records.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">5. Lesson Learned</h4>
+                    <p style="margin-top: 0; color: #ccc; line-height: 1.6;">
+                        Early data validation and meticulous data cleaning are essential to prevent dirty data entry and maintain overall data quality.
+                    </p>
+                </div>
+            </div>
+    <!-- KAHON 2: STEP 18 - Cybersecurity Case Study (SQL Injection) -->
+            <div style="background-color: #111; border: 1px solid #333; border-left: 4px solid #ff4d4d; border-radius: 8px; padding: 25px; margin-bottom: 30px;">
+                <h3 style="color: #ff4d4d; margin-top: 0;">Cybersecurity Case Study — SQL Injection (SQLi)</h3>
+                
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">1. What is the vulnerability?</h4>
+                    <p style="margin-top: 0; color: #ccc; line-height: 1.6;">
+                        <strong>SQL Injection (SQLi)</strong> is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. It occurs when untrusted user input is directly concatenated into a database query string without proper validation or sanitization.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">2. How can it happen?</h4>
+                    <p style="margin-top: 0; color: #ccc; line-height: 1.6;">
+                        It happens when developers construct dynamic database SQL queries by directly combining user inputs (such as login fields, search bars, or URL parameters) into the SQL string.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">3. What are the risks?</h4>
+                    <ul style="color: #ccc; line-height: 1.6; margin-top: 0; padding-left: 20px;">
+                        <li><strong>Unauthorized Access:</strong> Attackers can bypass authentication forms without valid credentials.</li>
+                        <li><strong>Data Exposure:</strong> Sensitive database records, user accounts, and passwords can be leaked.</li>
+                        <li><strong>Data Tampering:</strong> Unauthorized modification, deletion, or corruption of critical database data.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">4. How can developers prevent it? (Code Comparison)</h4>
+                    <p style="color: #ff4d4d; font-weight: bold; margin-bottom: 5px;">❌ Vulnerable Code Example (Direct Concatenation):</p>
+                    <pre style="background: #000; padding: 12px; border-radius: 6px; border: 1px solid #ff4d4d; color: #ff8080; overflow-x: auto; font-size: 0.9rem;"><code>// Dangerous: Input is joined directly into the query
+String query = "SELECT * FROM users WHERE username = '" + userInput + "' AND password = '" + passInput + "'";
+// An attacker entering "' OR '1'='1" bypasses the check.</code></pre>
+
+                    <p style="color: #4da6ff; font-weight: bold; margin-top: 15px; margin-bottom: 5px;">✅ Secure Code Example (Parameterized Query / Prepared Statement):</p>
+                    <pre style="background: #000; padding: 12px; border-radius: 6px; border: 1px solid #4da6ff; color: #80c1ff; overflow-x: auto; font-size: 0.9rem;"><code>// Safe: Placeholders (?) separate user data from database logic
+String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+PreparedStatement stmt = connection.prepareStatement(query);
+stmt.setString(1, userInput);
+stmt.setString(2, passInput);
+ResultSet rs = stmt.executeQuery();</code></pre>
+                </div>
+
+                <div>
+                    <h4 style="color: #ff6666; margin-bottom: 5px;">5. What security practices should be implemented?</h4>
+                    <ul style="color: #ccc; line-height: 1.6; margin-top: 0; padding-left: 20px;">
+                        <li><strong>Use Prepared Statements:</strong> Always utilize parameterized queries to treat user input as data, not executable code.</li>
+                        <li><strong>Input Validation & Sanitization:</strong> Enforce strict input types, lengths, and character filtering on client and server sides.</li>
+                        <li><strong>Principle of Least Privilege:</strong> Restrict database account permissions so the web application only accesses required resources.</li>
+                    </ul>
+                </div>
+            </div>
+          <!-- AI Literacy Evidence & Reflection Box -->
+    <div style="background-color: #111; border: 1px solid #333; border-left: 4px solid #ff4d4d; border-radius: 8px; padding: 25px; margin-bottom: 30px;">
+        <h3 style="color: #ff4d4d; margin-top: 0;">AI Literacy Evidence (AI Usage Log)</h3>
+        <p style="color: #ccc; margin-bottom: 20px;">Documenting how AI tools were responsibly utilized during the development of the portfolio and projects.</p>
+
+        <div style="overflow-x: auto !important; margin-bottom: 30px;">
+            <table style="width: 100% !important; border-collapse: collapse !important; text-align: left !important; font-size: 0.95rem !important;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #ff0000 !important; color: #ff6666 !important;">
+                        <th style="padding: 12px !important;">Date</th>
+                        <th style="padding: 12px !important;">Task</th>
+                        <th style="padding: 12px !important;">AI Assistance</th>
+                        <th style="padding: 12px !important;">My Verification / Result</th>
+                    </tr>
+                </thead>
+                <tbody style="color: #ccc !important;">
+                    <tr style="border-bottom: 1px solid #333 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">October 2026</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Portfolio Website</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Assisted with inline CSS layout, red-and-black theme styling, and responsive design.</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Reviewed and adjusted color codes and dimensions to fit personal preferences before GitHub deployment.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #333 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">October 2026</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Form & Data Validation</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Provided guidance on HTML required attributes and spreadsheet data validation concepts.</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Tested web forms manually and verified proper Excel data structuring and cleaning rules.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #333 !important;">
+                        <td style="padding: 12px !important; vertical-align: top !important;">October 2026</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Data Quality Case Study</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Generated explanations regarding spreadsheet data integrity and error handling examples.</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Analyzed content carefully to ensure correct implementation of Excel data cleaning principles.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px !important; vertical-align: top !important;">October 2026</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Final Reflection</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Organized milestones, learning outcomes, and technical challenges for the BSIT journey.</td>
+                        <td style="padding: 12px !important; vertical-align: top !important;">Read through the text and personalized details to match actual experiences at Datamex.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="color: #ff4d4d; margin-top: 20px;">AI Literacy Reflection Questions</h3>
+        
+        <div style="margin-bottom: 15px;">
+            <h4 style="color: #ff6666; margin-bottom: 5px;">1. What did AI help me accomplish?</h4>
+            <p style="margin-top: 0; color: #ccc; line-height: 1.6;">
+                AI helped me streamline portfolio web development, structure my red-and-black theme CSS layouts, organize the Data Quality Case Study (Excel & Form Validation), and draft my Final Reflection.
+            </p>
+        </div>
+
+        <div>
+            <h4 style="color: #ff6666; margin-bottom: 5px;">2. What did I personally verify?</h4>
+            <p style="margin-top: 0; color: #ccc; line-height: 1.6;">
+                I personally tested and reviewed all code components, HTML attributes, and data organization principles to ensure validation rules and spreadsheet formatting functioned accurately prior to publication.
+            </p>
+        </div>
+    </div>
+    <!-- EMPLOYABILITY SECTION -->
+<section id="employability" style="padding: 40px 20px; max-width: 1000px; margin: 40px auto;">
+    <h2 style="color: #ff0000 !important; text-align: center !important; margin-bottom: 40px !important; font-size: 2.5rem !important;">Employability & Career Plan</h2>
+
+    <!-- KAHON 1: Mock Interview Video Placeholder (Vacant Box) -->
+    <div style="background-color: rgba(0, 0, 0, 0.9) !important; border: 2px solid #ff0000 !important; border-radius: 12px !important; padding: 30px !important; margin-bottom: 30px !important; color: #ffffff !important; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3) !important;">
+        <h3 style="color: #ff0000 !important; margin-top: 0 !important; font-size: 1.8rem !important; border-bottom: 2px solid #333333 !important; padding-bottom: 10px !important; margin-bottom: 20px !important;">
+            Mock Interview Video
+        </h3>
+        <p style="color: #ccc !important; line-height: 1.6 !important; margin-bottom: 20px !important;">
+            Documentation and recording of the simulated IT job interview demonstrating professional communication, technical explanation, and foundational IT concepts.
+        </p>
+        
+      <!-- Video Player Frame -->
+    <div style="background-color: #000000 !important; border: 1px solid #ff4d4d !important; border-radius: 8px !important; padding: 15px !important; text-align: center !important;">
+        <video controls style="width: 100% !important; max-height: 450px !important; border-radius: 6px !important; display: block !important; margin: 0 auto !important;">
+            <source src="mockvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <span style="color: #888888 !important; font-size: 0.85rem !important; display: block !important; margin-top: 10px !important;">
+            Mock Interview Demonstration Video
+        </span>
+    </div>
+</div>
+
+<!-- MY CAREER PLAN SECTION -->
+    <div style="background-color: rgba(0, 0, 0, 0.9) !important; border: 2px solid #ff0000 !important; border-radius: 12px !important; padding: 30px !important; color: #ffffff !important; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3) !important;">
+        
+        <h3 style="color: #ff0000 !important; margin-top: 0 !important; font-size: 1.8rem !important; border-bottom: 2px solid #ff0000 !important; padding-bottom: 10px !important; margin-bottom: 20px !important;">
+            My Career Plan
+        </h3>
+
+        <p style="color: #ccc !important; line-height: 1.6; margin-bottom: 20px;">
+            A one-page IT Career Development Plan outlining professional growth targets, skills enhancement, and milestone objectives.
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 10px;">
+            <strong style="color: #ff6666;">Target IT Position:</strong> Junior Data Analyst / IT Support Specialist / Web Developer
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 10px;">
+            <strong style="color: #ff6666;">Target IT Field:</strong> Data Analytics, Information Technology Support, and Web Solutions
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 10px;">
+            <strong style="color: #ff6666;">Current Skills:</strong> HTML/CSS, Microsoft Excel (Data Organization & Formatting), Git/GitHub, Basic Problem Solving, and Documentation
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 10px;">
+            <strong style="color: #ff6666;">Skills to Improve:</strong> Advanced Excel Functions, Data Formatting, and Reporting Workflows
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 10px;">
+            <strong style="color: #ff6666;">Technologies to Learn:</strong> Database Management and Advanced Data Reporting
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 10px;">
+            <strong style="color: #ff6666;">Certifications to Consider:</strong> Microsoft Certified: Excel Associate, Basic Cybersecurity Fundamentals, and IT Support Certifications
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 10px;">
+            <strong style="color: #ff6666;">6-Month Goal:</strong> Successfully graduate with a BSIT degree from Datamex College of Saint Adeline and secure an entry-level IT or data-related role.
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 10px;">
+            <strong style="color: #ff6666;">1-Year Goal:</strong> Gain hands-on industry experience, master spreadsheet operations, and improve data reporting workflows.
+        </p>
+
+        <p style="color: #ccc !important; line-height: 1.8; margin-bottom: 0;">
+            <strong style="color: #ff6666;">3-Year Professional Goal:</strong> Advance into a full-fledged Data Analyst or IT Systems Specialist position leading data-driven business insights.
+        </p>
+
+    </div>
+    <section id="resume">
+        <div class="skills-details" style="text-align: center;">
+            <h2>My Resume</h2>
+            <p style="color: #cbd5e1; margin-bottom: 25px;">
+               You can read my resume below or download a copy.
+            </p>
+
+            <div style="margin-bottom: 20px;">
+                <embed src="Resume.pdf" type="application/pdf" width="100%" height="600px" style="border: 1px solid #dc2626; border-radius: 8px;">
+            </div>
+
+            <a href="Resume.pdf" download="Resume_Majorie.pdf" class="btn-primary">
+                📄 Download Resume (PDF)
+            </a>
+        </div>
+    </section>
+
+    <!-- Certificates Section na may tamang id at 500px size -->
+    <section id="certificates">
+        <div class="skills-details">
+            <h2>Certificates</h2>
+            <p style="color: #cbd5e1; margin-bottom: 20px;">
+                Here are some of my earned certificates i attended.
+            </p>
+
+            <div class="certificates-container">
+                <div class="cert-card">
+                    <img src="Certificate1.png" alt="Certificate 1">
+                </div>
+                <div class="cert-card">
+                    <img src="Certificate2.png" alt="Certificate 2">
+                </div>
+                <div class="cert-card">
+                    <img src="Certificate3.png" alt="Certificate 3">
+                </div>
+                <div class="cert-card">
+                    <img src="Certificate4.png" alt="Certificate 4">
+                </div>
+                <div class="cert-card">
+                    <img src="Certificate5.png" alt="Certificate 5">
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- GitHub Section -->
+    <section id="github">
+        <div class="skills-details">
+            <h2 style="color: #ef4444;">GitHub</h2>
+            <p style="color: #cbd5e1; margin-bottom: 25px;">
+                Source code, READMEs, and commit history for every project.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="btn-group" style="margin-bottom: 30px;">
+                <a href="https://github.com/buendiamajoriecsa" target="_blank" class="btn-primary">
+                    GitHub profile
+                </a>
+                <a href="Https://www.linkedin.com/in/buendiamajoriecsa" target="_blank" class="btn-secondary">
+                    LinkedIn profile
+                </a>
+            </div>
+
+            <!-- List of Repositories -->
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 15px; color: #cbd5e1; line-height: 1.6; position: relative; padding-left: 15px;">
+                    <span style="color: #dc2626; position: absolute; left: 0; font-weight: bold;">•</span>
+                    <a href="https://github.com/buendiamajoriecsa/studentmanagementsystem" target="_blank" style="color: #ef4444; font-weight: bold; text-decoration: none;">
+                        studentmanagementsystem
+                    </a>: Project 1 source code and repository files.
+                </li>
+
+                <li style="margin-bottom: 15px; color: #cbd5e1; line-height: 1.6; position: relative; padding-left: 15px;">
+                    <span style="color: #dc2626; position: absolute; left: 0; font-weight: bold;">•</span>
+                    <a href="https://buendiamajoriecsa.github.io/#projects" target="_blank" style="color: #ef4444; font-weight: bold; text-decoration: none;">
+                        campus-wifi-performance-analysis
+                    </a>: Project 2 wifi performance project files (Data Analysis and Charts).
+                </li>
+
+                <li style="margin-bottom: 15px; color: #cbd5e1; line-height: 1.6; position: relative; padding-left: 15px;">
+                    <span style="color: #dc2626; position: absolute; left: 0; font-weight: bold;">•</span>
+                    <a href="https://buendiamajoriecsa.github.io/#projects" target="_blank" style="color: #ef4444; font-weight: bold; text-decoration: none;">
+                        it-service-center-performance-analysis
+                    </a>: Project 3 IT service center project files (Data Analysis and Charts).
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- Contact Section -->
+<section id="contact" style="padding: 60px 20px; max-width: 1000px; margin: 40px auto; background-color: #000000; background-image: url('bc2.jpg'); background-size: cover; background-position: center; border-radius: 12px; position: relative;">
+    
+    <!-- Title Section -->
+    <h2 style="color: #ff0000; font-size: 2.8rem; font-weight: bold; margin-bottom: 5px;">Contact</h2>
+    <hr style="border: none; border-top: 1px solid #333333; margin-bottom: 25px;">
+
+    <p style="color: #cccccc; font-size: 1.1rem; margin-bottom: 30px; line-height: 1.5;">
+        Open to data analytics, sales reporting, and data entry roles. Messages open in your email app.
+    </p>
+
+    <!-- Direct Contact Details -->
+    <div style="margin-bottom: 35px; color: #ffffff; font-size: 1.1rem; line-height: 2;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+            <strong>Email:</strong> 
+            <span id="user-email" style="color: #ff0000; font-weight: 600;">nnelnida@gmail.com</span>
+            <button onclick="copyEmail()" style="background: transparent; border: 1px solid #ffffff; color: #ffffff; padding: 4px 14px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">
+                Copy
+            </button>
+        </div>
+        <div><strong>Phone:</strong> 09104276041</div>
+        <div><strong>Location:</strong> Paranaque City, Philippines</div>
+    </div>
+
+    <!-- Contact Form -->
+    <form onsubmit="sendToEmail(event)" style="display: flex; flex-direction: column; gap: 20px; max-width: 800px;">
+        <div>
+            <label for="sender-name" style="display: block; color: #ffffff; margin-bottom: 8px; font-weight: 500;">Your name</label>
+            <input type="text" id="sender-name" required placeholder="Enter your name" style="width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.6); border: 1px solid #333333; border-radius: 8px; color: #ffffff; font-size: 1rem; outline: none; box-sizing: border-box;">
+        </div>
+
+        <div>
+            <label for="sender-message" style="display: block; color: #ffffff; margin-bottom: 8px; font-weight: 500;">Message</label>
+            <textarea id="sender-message" rows="5" required placeholder="Enter your message" style="width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.6); border: 1px solid #333333; border-radius: 8px; color: #ffffff; font-size: 1rem; outline: none; resize: vertical; box-sizing: border-box;"></textarea>
+        </div>
+
+        <button type="submit" style="width: fit-content; padding: 14px 28px; background-color: #ff0000; color: #ffffff; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; margin-top: 10px;">
+            Send message
+        </button>
+    </form>
+
+</section>
+
+<!-- JavaScript Functions -->
+<script>
+    // Copy Email Functionality
+    function copyEmail() {
+        const emailText = document.getElementById('user-email').innerText;
+        navigator.clipboard.writeText(emailText).then(() => {
+            alert('Email copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+
+    // Direct Email App Opener
+    function sendToEmail(event) {
+        event.preventDefault();
+        const name = document.getElementById('sender-name').value;
+        const message = document.getElementById('sender-message').value;
+        const myEmail = document.getElementById('user-email').innerText;
+
+        const mailtoLink = `mailto:${myEmail}?subject=Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+        window.location.href = mailtoLink;
+    }
+</script>
+  <!-- Reflection Section -->
+<section id="reflection" style="padding: 40px 30px; max-width: 1000px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.9); border: 2px solid #ff0000; border-radius: 12px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); color: #ffffff;">
+    
+    <!-- Title Section -->
+    <h2 style="color: #ff0000 !important; font-size: 2.2rem; font-weight: bold; margin-top: 0; margin-bottom: 15px; text-align: left;">Reflection</h2>
+    
+    <!-- Horizontal Line / Underline -->
+    <hr style="border: none; border-top: 1px solid #333333; margin-bottom: 25px;">
+
+    <!-- Subheading / Title -->
+    <h3 style="color: #ffffff; font-size: 1.4rem; margin-bottom: 20px;">My BSIT Journey: From Fundamentals to Data-Driven Solutions</h3>
+
+    <!-- Question 1 -->
+    <div style="margin-bottom: 25px;">
+        <h4 style="color: #ff0000; font-size: 1.1rem; margin-bottom: 8px;">What Did I Know About IT Before Entering BSIT?</h4>
+        <p style="color: #ccc; line-height: 1.6; font-size: 0.95rem;">
+            Before entering the Bachelor of Science in Information Technology (BSIT) program at Datamex College of Saint Adeline, my understanding of Information Technology was quite limited and general. Like many beginners, I initially viewed IT as simply knowing how to operate computers, troubleshooting basic hardware issues, or navigating popular software applications. I knew that technology powered modern businesses, but I lacked a deep understanding of how data was structured, analyzed, and transformed into actionable insights. I did not fully grasp the processes behind building functional web applications, managing local databases, or designing structured analytical reports. Entering the BSIT program opened my eyes to the vast ecosystem of technology, showing me that IT is not just about using computers, but about solving real-world operational problems through structured logic, data accuracy, and user-centered solutions.
+        </p>
+    </div>
+
+    <!-- Question 2 -->
+    <div style="margin-bottom: 25px;">
+        <h4 style="color: #ff0000; font-size: 1.1rem; margin-bottom: 8px;">What Were the Most Important Things I Learned?</h4>
+        <p style="color: #ccc; line-height: 1.6; font-size: 0.95rem;">
+            Throughout my academic journey, the most important lesson I learned is the value of <strong>data integrity, structured analysis, and functional problem-solving</strong>. As I progressed in my studies, I discovered my core passion in <strong>Data Analytics</strong>—specifically using tools like <strong>Microsoft Excel</strong> to transform unstructured, raw data into clear business reports. I learned how essential data cleaning and data validation are before conducting any meaningful analysis. Mastering key Excel functions such as <code>SUMIFS</code>, <code>COUNTIFS</code>, and logical <code>IF</code> statements, alongside building dynamic Pivot Tables and summary charts, taught me how to present metrics effectively to support decision-making. Beyond technical tools, I developed critical soft skills including systematic problem-solving, attention to detail, time management, and effective documentation.
+        </p>
+    </div>
+
+    <!-- Question 3 -->
+    <div style="margin-bottom: 25px;">
+        <h4 style="color: #ff0000; font-size: 1.1rem; margin-bottom: 8px;">Which Project Taught Me the Most and Why?</h4>
+        <p style="color: #ccc; line-height: 1.6; font-size: 0.95rem;">
+            The project that taught me the most was developing and deploying our <strong>Student Management System</strong>. Building this application served as my primary technical milestone because it challenged me to handle both frontend interfaces and backend logic. This project required implementing essential web features, including user authentication, record creation, dynamic search filtering, and local database management. It taught me how system architecture works in practice—from structuring input validation to organizing data records efficiently. Moreover, publishing this project and deploying a personal portfolio website on GitHub Pages gave me firsthand experience with version control using Git, hosting configurations, and maintaining technical documentation.
+        </p>
+    </div>
+
+    <!-- Question 4 -->
+    <div style="margin-bottom: 25px;">
+        <h4 style="color: #ff0000; font-size: 1.1rem; margin-bottom: 8px;">What Technical Difficulty Challenged Me Most?</h4>
+        <p style="color: #ccc; line-height: 1.6; font-size: 0.95rem;">
+            The technical difficulty that challenged me the most was ensuring <strong>data accuracy, state management, and debugging errors</strong> during system integration and web hosting. While developing the Student Management System, configuring local storage handling and resolving deployment settings on GitHub Pages presented significant challenges. Small syntax mistakes or unhandled edge cases in search filtering often broke system functionality. I overcame these obstacles by adopting a step-by-step debugging approach—testing core functions individually, verifying data flow, and continuously referencing documentation. Similarly, when working on complex analytical reports in Excel, dealing with inconsistent raw data taught me the importance of implementing strict Data Validation rules and using text-to-columns cleaning workflows.
+        </p>
+    </div>
+
+    <!-- Conclusion -->
+    <div>
+        <h4 style="color: #ff0000; font-size: 1.1rem; margin-bottom: 8px;">Conclusion</h4>
+        <p style="color: #ccc; line-height: 1.6; font-size: 0.95rem;">
+            As I prepare to complete my BSIT degree, I look back on my journey with immense pride and gratitude. I have grown from a novice curious about technology into an aspiring Data Analytics professional equipped with practical Excel reporting and web application skills. My journey has prepared me to contribute effectively to data-driven teams, and I am excited to apply my skills to real-world business environments.
+        </p>
+    </div>
+
+</section>
+
+</body>
+</html>
